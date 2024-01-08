@@ -1,0 +1,18 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/rental_agency
+    username: root
+    password: Ma1#legende
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+      show_sql: true
+api:
+  endpoint:
+    base-url: /api/v1
+server:
+  port: 80

@@ -3,7 +3,9 @@ package com.msr.rentalagency.location;
 import com.msr.rentalagency.clientuser.ClientUser;
 import com.msr.rentalagency.vehicule.Vehicule;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDate;
 import java.util.Date;
@@ -17,19 +19,24 @@ public class Location {
 
     @ManyToOne
     @JoinColumn( name = "id_client", nullable = false )
+    @NotNull
     private ClientUser client;
 
     @ManyToOne
     @JoinColumn( name = "id_vehicle", nullable = false )
+    @NotNull
     private Vehicule vehicle;
 
     @NotEmpty(message = "dateDebut is required")
+    @Future
     private Date dateDebut;
     @NotEmpty(message = "dateFin is required")
+    @Future //date present or future
     private Date dateFin;
     @NotEmpty(message = "total is required")
     private double total;
     @NotEmpty(message = "dateReservation is required")
+
     private LocalDate dateReservation = LocalDate.now();
 
     public Integer getId() {

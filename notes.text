@@ -1,0 +1,29 @@
+DoCmd.RunSQL "CREATE TABLE Utilisateur(" & _
+   "idUtilisqteur INT," & _
+   "nom VARCHAR(50)," & _
+   "PRIMARY KEY(idUtilisqteur)" & _
+");"
+
+DoCmd.RunSQL "CREATE TABLE Vehicule(" & _
+   "idVehicule COUNTER," & _
+   "marque VARCHAR(50)," & _
+   "description VARCHAR(50)," & _
+   "PRIMARY KEY(idVehicule)" & _
+");"
+
+DoCmd.RunSQL "CREATE TABLE dateReservqtion(" & _
+   "date_reservation DATE," & _
+   "PRIMARY KEY(date_reservation)" & _
+");"
+
+DoCmd.RunSQL "CREATE TABLE reserver(" & _
+   "idUtilisqteur INT," & _
+   "idVehicule INT," & _
+   "date_reservation DATE," & _
+   "dateDebut DATETIME," & _
+   "dateFin DATETIME," & _
+   "PRIMARY KEY(idUtilisqteur, idVehicule, date_reservation)," & _
+   "FOREIGN KEY(idUtilisqteur) REFERENCES Utilisateur(idUtilisqteur)," & _
+   "FOREIGN KEY(idVehicule) REFERENCES Vehicule(idVehicule)," & _
+   "FOREIGN KEY(date_reservation) REFERENCES dateReservqtion(date_reservation)" & _
+");"
